@@ -3,6 +3,4 @@ gunicorn
 pyinstaller
 pep8
 yapf
-request
-schedule
 apscheduler
