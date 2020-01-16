@@ -16,6 +16,8 @@ sched.add_job(job_function, 'interval', seconds=5, id='id')
 
 sched.start()
 
+
+time.sleep(5)
 # sched.remove_job('id')
 
-time.sleep(10)
+time.sleep(5)
