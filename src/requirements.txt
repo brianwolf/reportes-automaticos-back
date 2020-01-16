@@ -1,0 +1,6 @@
+flask
+gunicorn
+pyinstaller
+pep8
+yapf
+request
