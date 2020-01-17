@@ -4,9 +4,9 @@ import os
 from flask import Flask, jsonify
 
 import apps.configs.variables as var
-import apps.services.taiga_scheduler_service as taiga_scheduler_service
+import apps.services.taiga.taiga_scheduler_service as taiga_scheduler_service
 from apps.configs.error_handlers import error_handler_bp
-from apps.services.taiga_reportes_config_service import guardar_json_config
+from apps.services.taiga.taiga_reportes_config_service import guardar_json_config
 from apps.utils.carga_dinamica_blue_prints import registrar_blue_prints
 
 PYTHON_HOST = var.get('PYTHON_HOST')

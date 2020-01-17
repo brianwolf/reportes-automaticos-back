@@ -4,3 +4,5 @@ pyinstaller
 pep8
 yapf
 apscheduler
+
+smtplib

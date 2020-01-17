@@ -4,9 +4,9 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
 from apps.models.taiga import ReportesConfig
 from apscheduler.job import Job
-from apps.services.taiga_service import generar_reporte_json
+from apps.services.taiga.taiga_service import generar_reporte_json
 from typing import List
-from apps.services.taiga_reportes_config_service import obtener_json_config
+from apps.services.taiga.taiga_reportes_config_service import obtener_json_config
 
 _sched = scheduler_util.crear_scheduler()
 
@@ -41,3 +41,5 @@ def actualizar_proceso_automatico(configs: List[ReportesConfig]):
     '''
     parar_proceso_automatico(configs)
     iniciar_proceso_automatico(configs)
+
+

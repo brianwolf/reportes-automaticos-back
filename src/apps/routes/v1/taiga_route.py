@@ -4,7 +4,7 @@ from uuid import UUID
 from flask import Blueprint, jsonify, request, send_file
 
 import apps.configs.variables as var
-import apps.services.taiga_service as taiga_service
+import apps.services.taiga.taiga_service as taiga_service
 from apps.models.taiga import Filtros
 
 blue_print = Blueprint('taiga', __name__, url_prefix='/api/v1/taiga')
