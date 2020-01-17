@@ -93,6 +93,7 @@ def enviar_email(config: ReportesConfig, contenido_pdf: bytes):
     '''
     Envia el email para terminar con el proceso
     '''
+    nombre_archivo = f'reporte-{config.nombre}-{date.today()}'
     encabezado = f'Entrega reporte mensual de {config.nombre} a la fecha {date.today()}'
     cuerpo = f'Muy buenos dias, mediante la presente les hago entrega del reporte mensual, saludos cordiales.'
 
@@ -102,6 +103,9 @@ def enviar_email(config: ReportesConfig, contenido_pdf: bytes):
                                  encabezado=encabezado,
                                  cuerpo=cuerpo,
                                  copia=config.email_taiga.copiados,
-                                 adjuntos=[contenido_pdf])
+                                 adjuntos=[(
+                                     nombre_archivo,
+                                     contenido_pdf,
+                                 )])
 
     email_util.enviar_email(email_a_enviar)
