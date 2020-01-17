@@ -1,5 +1,10 @@
+from typing import Callable
+
+from apscheduler.job import Job
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
+
+_MAX_HILOS_POR_JOB = 3
 
 
 def crear_scheduler() -> BackgroundScheduler:
@@ -20,19 +25,22 @@ def inciar_scheduler(scheduler: BackgroundScheduler):
     '''
     Crea el scheduler que se va a utilizar 
     '''
-    scheduler.start(paused=True)
+    scheduler.start()
 
 
-def remover_job(scheduler: BackgroundScheduler, id: str):
+def remover_job(scheduler: BackgroundScheduler, id: str) -> Job:
     '''
     Crea el scheduler que se va a utilizar 
     '''
     return scheduler.remove_job(id)
 
 
-def agregar_job(scheduler: BackgroundScheduler, funcion: function, cron: str,
-                id: str):
+def agregar_job(scheduler: BackgroundScheduler, funcion: Callable, cron: str,
+                id: str) -> Job:
     '''
     Agrega un job al scheduler mediante una funcion y un cron
     '''
-    return scheduler.add_job(funcion, CronTrigger.from_crontab(cron), id=id)
+    job = scheduler.add_job(funcion, CronTrigger.from_crontab(cron), id=id)
+    job.modify(max_instances=_MAX_HILOS_POR_JOB)
+
+    return job

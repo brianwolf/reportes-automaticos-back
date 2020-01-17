@@ -1,4 +1,4 @@
-from apps.models.tareas import Filtros
+from apps.models.taiga import Filtros
 from typing import List, Dict
 import re
 

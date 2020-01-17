@@ -1,4 +1,5 @@
 from typing import List
+from uuid import UUID
 
 
 class Filtros(object):
@@ -26,16 +27,16 @@ class Filtros(object):
 
 class ReportesConfig(object):
     def __init__(self, nombre: str, cron: str, filtros: Filtros,
-                 url_datos: str):
+                 uuid: UUID):
         self.nombre = nombre
         self.cron = cron
         self.filtros = filtros
-        self.url_datos = url_datos
+        self.uuid = uuid
 
     def to_dict(self):
         return {
             'nombre': self.nombre,
             'cron': self.cron,
             'filtros': self.filtros,
-            'url_datos': self.url_datos
+            'uuid': self.uuid
         }

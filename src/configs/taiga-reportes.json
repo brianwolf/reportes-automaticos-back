@@ -1,0 +1,19 @@
+[
+    {
+        "nombre": "tareas-java",
+        "cron": "* * * * *",
+        "uuid": "2246530810474ccebc7df09086f824c7",
+        "filtros": {
+            "proyectos": [],
+            "personas": [],
+            "estados": [
+                "Hechas"
+            ],
+            "prioridades": [],
+            "campos_mostrados": [
+                "subject",
+                "description"
+            ]
+        }
+    }
+]
