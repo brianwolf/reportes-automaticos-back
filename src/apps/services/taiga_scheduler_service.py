@@ -15,22 +15,14 @@ def _funcion():
     print('funcion vacia')
 
 
-def iniciar():
-    '''
-    Inicia la carga del proceso automatico, esto debe usarse una vez
-    levantado el proyecto
-    '''
-    iniciar_proceso_automatico(obtener_json_config())
-
-
-def iniciar_proceso_automatico(configs: List[ReportesConfig]):
+def iniciar_proceso_automatico():
     '''
     Obtine el json guardado con la configuracion autormatica de los reportes
     '''
-    for config in configs:
+    for config in obtener_json_config():
         job = scheduler_util.agregar_job(_sched, _funcion,
                                          config.cron, config.nombre)
-        job.args = [config.filtros]
+        job.args = [config.uuid, config.filtros]
         job.func = generar_reporte_json
 
     scheduler_util.inciar_scheduler(_sched)

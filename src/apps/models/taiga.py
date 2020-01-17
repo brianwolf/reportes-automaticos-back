@@ -24,6 +24,10 @@ class Filtros(object):
             'campos_mostrados': self.campos_mostrados
         }
 
+    @staticmethod
+    def from_dict(d: dict):
+        return Filtros(**d)
+
 
 class ReportesConfig(object):
     def __init__(self, nombre: str, cron: str, filtros: Filtros,
@@ -40,3 +44,9 @@ class ReportesConfig(object):
             'filtros': self.filtros,
             'uuid': self.uuid
         }
+
+    @staticmethod
+    def from_dict(d: dict):
+        instancia = ReportesConfig(**d)
+        instancia.filtros = Filtros.from_dict(d['filtros'])
+        return instancia

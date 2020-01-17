@@ -34,7 +34,7 @@ def obtener_json_config() -> List[ReportesConfig]:
         with open(ruta_completa, 'r') as archivo:
             json_config = json.load(archivo)
 
-        return [ReportesConfig(**config) for config in json_config]
+        return [ReportesConfig.from_dict(config) for config in json_config]
 
     except Exception as e:
         get_logger().error(str(e))

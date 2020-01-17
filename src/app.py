@@ -17,7 +17,7 @@ app.register_blueprint(error_handler_bp)
 
 registrar_blue_prints(app, 'apps/routes')
 
-taiga_scheduler_service.iniciar()
+taiga_scheduler_service.iniciar_proceso_automatico()
 
 
 # import apps.schedulers.prueba2 as prueba2
