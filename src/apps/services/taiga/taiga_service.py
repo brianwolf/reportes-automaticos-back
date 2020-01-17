@@ -1,3 +1,4 @@
+from datetime import date
 from enum import Enum
 from uuid import UUID
 
@@ -7,7 +8,7 @@ import apps.configs.variables as var
 import apps.utils.tareas_util as tareas_util
 from apps.configs.loggers import get_logger
 from apps.models.errores import AppException
-from apps.models.taiga import Filtros
+from apps.models.taiga import Filtros, ReportesConfig
 from apps.utils.csv_util import csv_a_diccionario
 
 _TAIGA_HOST = var.get('TAIGA_HOST')
@@ -42,7 +43,21 @@ def descargar_csv_tareas_diccionario(uuid: UUID) -> dict:
     return csv_a_diccionario(contenido)
 
 
-def generar_reporte_json(uuid: UUID, filtros: Filtros) -> dict:
+def generar_reporte_json(config: ReportesConfig) -> dict:
+    '''
+    Genera el reporte con la configuracion enviada
+    '''
+    return {
+        'titulo':
+        config.nombre,
+        'fecha':
+        date.today(),
+        'proyectos':
+        generar_reporte_proyectos_json(config.uuid_csv, config.filtros)
+    }
+
+
+def generar_reporte_proyectos_json(uuid: UUID, filtros: Filtros) -> dict:
     '''
     Genera un json con el formato de reporte, que es un diccionario 
     con claves iguales a los proyectos y sus valores las tareas de ese proyecto
@@ -53,8 +68,8 @@ def generar_reporte_json(uuid: UUID, filtros: Filtros) -> dict:
     tareas_agrupadas = tareas_util.agrupar_por_proyectos(tareas)
 
     for proyecto in tareas_agrupadas:
-        for clave, valor in proyecto.items():
-            proyecto[clave] = tareas_util.filtrar_campos_mostrados(
-                valor, filtros.campos_mostrados)
+
+        proyecto['tareas'] = tareas_util.filtrar_campos_mostrados(
+            proyecto['tareas'], filtros.campos_mostrados)
 
     return tareas_agrupadas

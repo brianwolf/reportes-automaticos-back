@@ -73,19 +73,20 @@ def generar_reporte(config: ReportesConfig):
     '''
     Genera el reporte pdf y envia el email al finalizar
     '''
-    reporte_json = generar_reporte_json(config.uuid_csv, config.filtros)
+    reporte_json = generar_reporte_json(config)
 
-    # url_completa = _GENERADOR_PDF_HOST + config.url_generar_reporte
-    # resultado = requests.post(url=url_completa, params=reporte_json)
+    url_completa = _GENERADOR_PDF_HOST + config.url_generar_reporte
+    get_logger().info(f'Ejecutando REST con url -> {url_completa}')
 
-    # if resultado.status_code != 200:
-    #     mensaje = f'Error servicio generar reporte -> URL: {config.url_generar_reporte}, STATUS: {resultado.status_code}, BODY: {resultado.get_data()}'
-    #     app_exception = AppException(Errores.SERVICIO_URL_REPORTE, mensaje)
-    #     get_logger().error(app_exception.to_dict())
-    #     raise app_exception
+    resultado = requests.post(url=url_completa, params=reporte_json)
 
-    # contenido_pdf = resultado.get_data()
-    contenido_pdf = open('app.py', 'r').read()
+    if resultado.status_code != 200:
+        mensaje = f'Error servicio generar reporte -> URL: {url_completa}, STATUS: {resultado.status_code}, BODY: {resultado.text}'
+        app_exception = AppException(Errores.SERVICIO_URL_REPORTE, mensaje)
+        get_logger().error(app_exception.to_dict())
+        raise app_exception
+
+    contenido_pdf = resultado.text
     enviar_email(config, contenido_pdf)
 
 

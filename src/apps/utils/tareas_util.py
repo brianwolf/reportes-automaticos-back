@@ -119,7 +119,10 @@ def agrupar_por_proyectos(tareas: List[Dict]) -> List[Dict]:
             if proyecto == _parsear_nombre_proyecto(tarea[_CLAVE_TAGS])
         ]
 
-        proyectos_agrupados.append({proyecto: tareas_proyecto})
+        proyectos_agrupados.append({
+            "nombre": proyecto,
+            "tareas": tareas_proyecto
+        })
 
     return proyectos_agrupados
 

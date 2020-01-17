@@ -8,7 +8,7 @@ mapa_variables = {
     'NOMBRE_LOG_PREDEFINIDO': 'app',
     'NOMBRE_LOG_REST': 'rest',
 
-    'GENERADOR_PDF_HOST': 'http://localhost:5000',
+    'GENERADOR_PDF_HOST': 'http://localhost:5001',
 
     'TAIGA_HOST': 'https://taiga.leafnoise.io/',
     'API_TAIGA_TAREAS': 'api/v1/userstories/csv?uuid=',

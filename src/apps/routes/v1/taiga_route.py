@@ -36,7 +36,7 @@ def generar_reporte_json(uuid=UUID):
     json = request.get_json()
     filtros = Filtros(**json)
 
-    diccionario = taiga_service.generar_reporte_json(uuid, filtros)
+    diccionario = taiga_service.generar_reporte_proyectos_json(uuid, filtros)
     return jsonify(diccionario)
 
 
