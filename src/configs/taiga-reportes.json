@@ -2,7 +2,14 @@
     {
         "nombre": "tareas-java",
         "cron": "* * * * *",
-        "uuid": "2246530810474ccebc7df09086f824c7",
+        "uuid_csv": "2246530810474ccebc7df09086f824c7",
+        "url_generar_reporte": "localhost:5000/api/v1/reportes/carpeta/prueba/html/template/pdf/reporte-tareas-java?guardar=false",
+        "email_taiga": {
+            "destinatarios": [
+                "brian.lobo@moorea.io"
+            ],
+            "copiados": []
+        },
         "filtros": {
             "proyectos": [],
             "personas": [],

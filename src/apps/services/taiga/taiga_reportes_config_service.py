@@ -1,5 +1,6 @@
 import json
 import os
+import shutil
 from typing import Dict, List
 from uuid import uuid4
 
@@ -27,10 +28,16 @@ def guardar_json_config(lista_configs: List[ReportesConfig]):
 
 def obtener_json_config() -> List[ReportesConfig]:
     '''
-    Obtine el json guardado con la configuracion autormatica de los reportes
+    Obtine el json guardado con la configuracion automatica de los reportes
     '''
     try:
         ruta_completa = _DIRECTORIO_ARCHIVO_CONFIG + _NOMBRE_ARCHIVO_CONFIG
+
+        if not os.path.exists(ruta_completa):
+            mensaje = f'No se encontro el archivo de configuracion en \"{ruta_completa}\"'
+            get_logger().info(mensaje)
+            return []
+
         with open(ruta_completa, 'r') as archivo:
             json_config = json.load(archivo)
 
@@ -38,4 +45,14 @@ def obtener_json_config() -> List[ReportesConfig]:
 
     except Exception as e:
         get_logger().error(str(e))
-        return [ReportesConfig('', '', '* * * * 2099', uuid4())]
+        return []
+
+
+def actualizar_json_config(lista_configs: List[ReportesConfig]):
+    '''
+    Actualiza el json guardado con la configuracion automatica de los reportes
+    '''
+    if os.path.exists(_DIRECTORIO_ARCHIVO_CONFIG):
+        shutil.rmtree(_DIRECTORIO_ARCHIVO_CONFIG)
+
+    guardar_json_config(lista_configs)

@@ -35,6 +35,7 @@ message["From"] = sender_email
 message["To"] = receiver_email
 message["Subject"] = subject
 message["Bcc"] = receiver_email  # Recommended for mass emails
+# msg["Cc"] = "serenity@example.com,inara@example.com" # PROBAR
 
 # Add body to email
 message.attach(MIMEText(body, "plain"))
