@@ -20,7 +20,5 @@ registrar_blue_prints(app, 'apps/routes')
 taiga_scheduler_service.iniciar_proceso_automatico()
 
 
-# import apps.schedulers.prueba2 as prueba2
-
 if __name__ == "__main__":
     app.run(host=PYTHON_HOST, port=PYTHON_PORT, debug=True)
