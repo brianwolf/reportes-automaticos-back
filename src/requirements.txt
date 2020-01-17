@@ -4,5 +4,4 @@ pyinstaller
 pep8
 yapf
 apscheduler
-# smtplib
-# requests
+requests

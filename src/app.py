@@ -17,7 +17,7 @@ app.register_blueprint(error_handler_bp)
 
 registrar_blue_prints(app, 'apps/routes')
 
-taiga_scheduler_service.iniciar_proceso_automatico()
+# taiga_scheduler_service.iniciar_proceso_automatico()
 
 
 if __name__ == "__main__":

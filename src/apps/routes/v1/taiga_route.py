@@ -5,6 +5,7 @@ from flask import Blueprint, jsonify, request, send_file
 
 import apps.configs.variables as var
 import apps.services.taiga.taiga_service as taiga_service
+import apps.services.taiga.taiga_scheduler_service as taiga_scheduler_service
 from apps.models.taiga import Filtros
 
 blue_print = Blueprint('taiga', __name__, url_prefix='/api/v1/taiga')
@@ -37,3 +38,10 @@ def generar_reporte_json(uuid=UUID):
 
     diccionario = taiga_service.generar_reporte_json(uuid, filtros)
     return jsonify(diccionario)
+
+
+@blue_print.route('/procesoautomatico', methods=['GET'])
+def iniciar_proceso_automatico():
+
+    taiga_scheduler_service.iniciar_proceso_automatico_manualmente()
+    return ''

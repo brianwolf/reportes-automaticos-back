@@ -30,17 +30,12 @@ class Filtros(object):
 
 
 class EmailTaiga(object):
-    def __init__(self,
-                 destinatarios: List[str],
-                 copiados: List[str]):
+    def __init__(self, destinatarios: List[str], copiados: List[str]):
         self.destinatarios = destinatarios
         self.copiados = copiados
 
     def to_dict(self):
-        return {
-            'destinatarios': self.destinatarios,
-            'copiados': self.copiados
-        }
+        return {'destinatarios': self.destinatarios, 'copiados': self.copiados}
 
     @staticmethod
     def from_dict(d: dict):
@@ -49,7 +44,8 @@ class EmailTaiga(object):
 
 class ReportesConfig(object):
     def __init__(self, nombre: str, cron: str, filtros: Filtros,
-                 uuid_csv: UUID, url_generar_reporte: str, email_taiga: EmailTaiga):
+                 uuid_csv: UUID, url_generar_reporte: str,
+                 email_taiga: EmailTaiga):
         self.nombre = nombre
         self.cron = cron
         self.filtros = filtros
