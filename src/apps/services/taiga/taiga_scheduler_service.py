@@ -1,11 +1,14 @@
+import json
 from datetime import date
 from enum import Enum
 from typing import List
 
+import requests
+from apscheduler.job import Job
+
 import apps.configs.variables as var
 import apps.utils.email_util as email_util
 import apps.utils.scheduler_util as scheduler_util
-import requests
 from apps.configs.loggers import get_logger
 from apps.models.emails import EmailModelo
 from apps.models.errores import AppException
@@ -13,7 +16,6 @@ from apps.models.taiga import EmailTaiga, ReportesConfig
 from apps.services.taiga.taiga_reportes_config_service import \
     obtener_json_config
 from apps.services.taiga.taiga_service import generar_reporte_json
-from apscheduler.job import Job
 
 _sched = scheduler_util.crear_scheduler()
 
@@ -77,8 +79,9 @@ def generar_reporte(config: ReportesConfig):
 
     url_completa = _GENERADOR_PDF_HOST + config.url_generar_reporte
     get_logger().info(f'Ejecutando REST con url -> {url_completa}')
-
-    resultado = requests.post(url=url_completa, params=reporte_json)
+    
+    headers = {'content-type': 'application/json'}
+    resultado = requests.post(url_completa, data=json.dumps(reporte_json), headers=headers)
 
     if resultado.status_code != 200:
         mensaje = f'Error servicio generar reporte -> URL: {url_completa}, STATUS: {resultado.status_code}, BODY: {resultado.text}'
@@ -86,7 +89,7 @@ def generar_reporte(config: ReportesConfig):
         get_logger().error(app_exception.to_dict())
         raise app_exception
 
-    contenido_pdf = resultado.text
+    contenido_pdf = resultado.content
     enviar_email(config, contenido_pdf)
 
 
@@ -94,7 +97,7 @@ def enviar_email(config: ReportesConfig, contenido_pdf: bytes):
     '''
     Envia el email para terminar con el proceso
     '''
-    nombre_archivo = f'reporte-{config.nombre}-{date.today()}'
+    nombre_archivo = f'reporte-{config.nombre}-{date.today()}.pdf'
     encabezado = f'Entrega reporte mensual de {config.nombre} a la fecha {date.today()}'
     cuerpo = f'Muy buenos dias, mediante la presente les hago entrega del reporte mensual, saludos cordiales.'
 
