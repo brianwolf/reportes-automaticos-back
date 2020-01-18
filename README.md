@@ -1,6 +1,6 @@
-# CIRCLECI
+# reportes-automaticos-back
 
-Ejemplo de arquitectura de un proyecto usando **python**, **circleci** y **docker**
+> Permite generar ejecutar tareas programadas para la generacion de reportes, actualmente solo genera con Taiga
 
 ![alt text](img/python.png)
 ![alt text](img/circleci.png)
@@ -29,7 +29,7 @@ Los parametros del script `./scripts/docker/ambiente.sh` y las variables de ambi
 ## CONFIGURACION
 
 * Dentro de la carpeta **config** se encuentran los archivos de variables de ambiente para levantar el docker
-* En los scripts **ambiente.sh** encontrados dentro de la carpeta scripts se modifican las variables para sus scripts 
+* En los scripts **ambiente.sh** encontrados dentro de la carpeta scripts se modifican las variables para sus scripts
 
 ## PAGINAS
 
