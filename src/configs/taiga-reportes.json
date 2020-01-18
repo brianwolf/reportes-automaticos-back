@@ -1,0 +1,26 @@
+[
+    {
+        "nombre": "tareas-java",
+        "cron": "* * * * *",
+        "uuid_csv": "2246530810474ccebc7df09086f824c7",
+        "url_generar_reporte": "/api/v1/reportes/carpeta/java-anses/html/template/pdf/reporte-tareas-java?guardar=false",
+        "email_taiga": {
+            "destinatarios": [
+                "brian.lobo@moorea.io"
+            ],
+            "copiados": []
+        },
+        "filtros": {
+            "proyectos": [],
+            "personas": [],
+            "estados": [
+                "Hechas"
+            ],
+            "prioridades": [],
+            "campos_mostrados": [
+                "subject",
+                "description"
+            ]
+        }
+    }
+]

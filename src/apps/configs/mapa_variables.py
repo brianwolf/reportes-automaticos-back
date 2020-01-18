@@ -8,6 +8,15 @@ mapa_variables = {
     'NOMBRE_LOG_PREDEFINIDO': 'app',
     'NOMBRE_LOG_REST': 'rest',
 
+    'GENERADOR_PDF_HOST': 'http://localhost:5001',
+
     'TAIGA_HOST': 'https://taiga.leafnoise.io/',
-    'API_TAREAS': 'api/v1/userstories/csv?uuid=2246530810474ccebc7df09086f824c7'
+    'API_TAIGA_TAREAS': 'api/v1/userstories/csv?uuid=',
+
+    'DIRECTORIO_ARCHIVO_CONFIG': 'configs/',
+    'NOMBRE_ARCHIVO_CONFIG': 'taiga-reportes.json',
+
+    'EMAIL_ENVIADOR': 'brian.lobo@moorea.io',
+    'EMAIL_PASS': '$leafnoise%'
+
 }
