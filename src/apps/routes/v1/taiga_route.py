@@ -6,7 +6,7 @@ from flask import Blueprint, jsonify, request, send_file
 import apps.configs.variables as var
 import apps.services.taiga.taiga_service as taiga_service
 import apps.services.taiga.taiga_scheduler_service as taiga_scheduler_service
-from apps.models.taiga import Filtros
+from apps.models.taiga import Filtros, ReportesConfig
 
 blue_print = Blueprint('taiga', __name__, url_prefix='/api/v1/taiga')
 
@@ -30,11 +30,21 @@ def obtener_csv_taiga_json(uuid=UUID):
     return jsonify(diccionario)
 
 
+@blue_print.route('/csv/tareas/<uuid>/reporte/proyectos', methods=['POST'])
+def generar_reporte_proyectos_json(uuid=UUID):
+
+    json = request.get_json()
+    filtros = Filtros(**json)
+
+    diccionario = taiga_service.generar_reporte_proyectos_json(uuid, filtros)
+    return jsonify(diccionario)
+
+
 @blue_print.route('/csv/tareas/<uuid>/reporte', methods=['POST'])
 def generar_reporte_json(uuid=UUID):
 
     json = request.get_json()
-    filtros = Filtros(**json)
+    filtros = ReportesConfig(**json)
 
     diccionario = taiga_service.generar_reporte_proyectos_json(uuid, filtros)
     return jsonify(diccionario)

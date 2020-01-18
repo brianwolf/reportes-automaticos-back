@@ -48,12 +48,9 @@ def generar_reporte_json(config: ReportesConfig) -> dict:
     Genera el reporte con la configuracion enviada
     '''
     return {
-        'titulo':
-        config.nombre,
-        'fecha':
-        date.today(),
-        'proyectos':
-        generar_reporte_proyectos_json(config.uuid_csv, config.filtros)
+        'titulo': config.nombre,
+        'fecha': str(date.today()),
+        'proyectos': generar_reporte_proyectos_json(config.uuid_csv, config.filtros)
     }
 
 
