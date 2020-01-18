@@ -4,16 +4,9 @@ version: 2.1
 # WORFLOWS
 ##################################################################
 workflows:
-  despliegue_a_master:
+  despliegue_de_master:
     jobs:
       - creacion_de_docker:
-          filters:
-            branches:
-              only: master
-
-      - despliegue_a_heroku:
-          requires:
-            - creacion_de_docker
           filters:
             branches:
               only: master
@@ -31,26 +24,6 @@ executors:
 # JOBS
 ##################################################################
 jobs:
-  nueva_version:
-    executor: ejecutor-base
-    steps:
-      - attach_workspace:
-          at: ~/proyect
-      - checkout
-      - run:
-          name: generar_nueva_version
-          command: ./scripts/versionado/actualizar-version.sh
-
-  descargar_configuracion:
-    executor: ejecutor-base
-    steps:
-      - attach_workspace:
-          at: ~/proyect
-      - checkout
-      - run:
-          name: reemplazar-config
-          command: ./scripts/ambiente/reemplazar-config.sh
-
   creacion_de_docker:
     executor: ejecutor-base
     steps:
@@ -63,19 +36,3 @@ jobs:
       - run:
           name: push
           command: ./scripts/docker/push.sh
-
-  despliegue_a_heroku:
-    executor: ejecutor-base
-    steps:
-      - attach_workspace:
-          at: ~/proyect
-      - checkout
-      - run:
-          name: instalar-heroku
-          command: wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
-      - run:
-          name: generar-dockerfile
-          command: ./scripts/heroku/generar-dockerfile.sh
-      - run:
-          name: despliegue
-          command: ./scripts/heroku/despliegue.sh
