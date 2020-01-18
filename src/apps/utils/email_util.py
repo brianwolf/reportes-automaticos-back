@@ -19,7 +19,7 @@ def enviar_email(email_a_enviar: EmailModelo):
     text = _preparar_email(email_a_enviar)
     context = ssl.create_default_context()
 
-    receiver_email = EmailModelo.lista_a_str(email_a_enviar.para)
+    receiver_email = ', '.join(email_a_enviar.para)
 
     server = smtplib.SMTP_SSL(_SMT_HOST, _SMT_PORT, context=context)
     server.login(email_a_enviar.de, email_a_enviar.contrasenia)
@@ -32,9 +32,9 @@ def _preparar_email(email_a_enviar: EmailModelo) -> str:
     '''
     message = MIMEMultipart()
     message["From"] = email_a_enviar.de
-    message["To"] = EmailModelo.lista_a_str(email_a_enviar.para)
+    message["To"] = ', '.join(email_a_enviar.para)
     message["Subject"] = email_a_enviar.encabezado
-    message["Bcc"] = EmailModelo.lista_a_str(email_a_enviar.copia)
+    message["Bcc"] = ', '.join(email_a_enviar.copia)
     message.attach(MIMEText(email_a_enviar.cuerpo, "plain"))
 
     for part in _preparar_adjuntos(email_a_enviar.adjuntos):
