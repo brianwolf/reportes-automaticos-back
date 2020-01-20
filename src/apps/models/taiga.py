@@ -31,7 +31,7 @@ class FiltrosTareas(FiltrosAbstracto):
         self.prioridades = prioridades
 
     def to_dict(self):
-        d = super.to_dict()
+        d = super().to_dict()
         d.update({
             'proyectos': self.proyectos,
             'prioridades': self.prioridades

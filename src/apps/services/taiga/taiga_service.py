@@ -13,7 +13,7 @@ from apps.utils.csv_util import csv_a_diccionario
 
 _TAIGA_HOST = var.get('TAIGA_HOST')
 _API_TAIGA_TAREAS = var.get('API_TAIGA_TAREAS')
-_API_TAIGA_SUB_TAREAS = var.get('API_TAIGA_SUB_TAREAS')
+_API_TAIGA_SUB_TAREAS = var.get('API_TAIGA_SUBTAREAS')
 
 
 class Errores(Enum):
@@ -71,10 +71,13 @@ def generar_reporte_json(config: ReportesConfig) -> dict:
     '''
     Genera el reporte con la configuracion enviada
     '''
+    proyectos = generar_reporte_proyectos_json(
+        config.uuid_tareas, config.uuid_sub_tareas, config.filtros)
+
     return {
         'titulo': config.nombre,
         'fecha': str(date.today()),
-        'proyectos': generar_reporte_proyectos_json(config.uuid_tareas, config.filtros)
+        'proyectos': proyectos
     }
 
 
