@@ -1,10 +1,14 @@
-from apps.models.taiga import Filtros
-from typing import List, Dict
 import re
+from typing import Dict, List
+
+from apps.models.taiga import FiltrosSubTareas, FiltrosTareas, Filtros
 
 _CLAVE_TAGS = 'tags'
 _CLAVE_PERSONAS = 'assigned_to_full_name'
 _CLAVE_ESTADOS = 'status'
+_CLAVE_SUB_TAREAS = 'tasks'
+
+_CLAVE_SUB_TAREA_REFERENCIA = 'ref'
 
 _PREFIJO_NOMBRE_PROYECTO = '$ '
 _PREFIJO_NOMBRE_PRIORIDAD = '- '
@@ -16,7 +20,35 @@ _REGEX_NOMBRE_PROYECTO = '\$ \w*'
 _REGEX_NOMBRE_PRIORIDAD = '\- \w*'
 
 
-def filtrar(tareas: List[Dict], filtros: Filtros) -> List[Dict]:
+def agrupar_tareas_con_sub_tareas(tareas: List[Dict], subtareas: List[Dict]) -> dict:
+    '''
+    Agrupa las subtareas con su tarea correspondiente
+    '''
+    for tarea in tareas:
+
+        if not tarea[_CLAVE_SUB_TAREAS]:
+            continue
+
+        ref_sub_tareas = tarea[_CLAVE_SUB_TAREAS].split(',')
+
+        tarea[_CLAVE_SUB_TAREAS] = [
+            _sub_tarea_por_referencia(subtareas, ref_sub_tarea)
+            for ref_sub_tarea in ref_sub_tareas
+        ]
+
+    return tareas
+
+
+def _sub_tarea_por_referencia(subtareas: List[Dict], referencia: str) -> dict:
+    '''
+    Devuelve la sub tarea que corresponde con esa referencia
+    '''
+    for sub_tarea in subtareas:
+        if referencia == sub_tarea[_CLAVE_SUB_TAREA_REFERENCIA]:
+            return sub_tarea
+
+
+def filtrar(tareas: List[Dict], filtros: FiltrosTareas) -> List[Dict]:
     '''
     Filtra las tareas en base a los filtros pasados por parametro
     '''
@@ -26,6 +58,17 @@ def filtrar(tareas: List[Dict], filtros: Filtros) -> List[Dict]:
     tareas = filtrar_por_proyectos(tareas, filtros.proyectos)
 
     return tareas
+
+
+def filtrar_sub_tareas(subtareas: List[Dict], filtros: FiltrosSubTareas) -> List[Dict]:
+    '''
+    Filtra las subs tareas en base a los filtros pasados por parametro
+    '''
+    subtareas = _filtrar_por_clave(
+        subtareas, _CLAVE_PERSONAS, filtros.estados)
+    subtareas = _filtrar_por_clave(
+        subtareas, _CLAVE_PERSONAS, filtros.personas)
+    return subtareas
 
 
 def filtrar_campos_mostrados(tareas: List[Dict],
