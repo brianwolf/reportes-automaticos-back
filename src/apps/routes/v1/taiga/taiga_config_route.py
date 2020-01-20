@@ -6,17 +6,17 @@ import apps.services.taiga.taiga_reportes_config_service as taiga_reportes_confi
 from apps.models.taiga import Filtros, ReportesConfig
 
 blue_print = Blueprint('taiga_configuraciones', __name__,
-                       url_prefix='/api/v1/taiga')
+                       url_prefix='/api/v1/taiga/configs')
 
 
-@blue_print.route('/configuraciones/automatizados', methods=['GET'])
+@blue_print.route('/reportes', methods=['GET'])
 def obtener_taiga_config():
 
     configs = taiga_reportes_config_service.obtener_json_config()
     return jsonify([config.to_dict() for config in configs])
 
 
-@blue_print.route('/configuraciones/automatizados', methods=['PUT'])
+@blue_print.route('/reportes', methods=['PUT'])
 def actualizar_taiga_config():
 
     lista_diccionarios = request.get_json()
@@ -27,7 +27,7 @@ def actualizar_taiga_config():
     return '', 200
 
 
-@blue_print.route('/configuraciones/automatizados', methods=['POST'])
+@blue_print.route('/reportes', methods=['POST'])
 def nueva_taiga_config():
 
     lista_diccionarios = request.get_json()

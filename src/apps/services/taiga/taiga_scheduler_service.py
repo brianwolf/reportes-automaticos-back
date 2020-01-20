@@ -32,7 +32,7 @@ def _funcion():
     print('funcion vacia')
 
 
-def iniciar_proceso_automatico_manualmente():
+def generar_todos_los_reportes_manualmente():
     configs = obtener_json_config()
 
     for config in configs:
@@ -63,12 +63,12 @@ def parar_proceso_automatico():
     scheduler_util.parar_scheduler(_sched)
 
 
-def actualizar_proceso_automatico(configs: List[ReportesConfig]):
+def actualizar_proceso_automatico():
     '''
     Obtine el json guardado con la configuracion autormatica de los reportes
     '''
-    parar_proceso_automatico(configs)
-    iniciar_proceso_automatico(configs)
+    parar_proceso_automatico()
+    iniciar_proceso_automatico()
 
 
 def generar_reporte(config: ReportesConfig):
@@ -90,10 +90,10 @@ def generar_reporte(config: ReportesConfig):
         raise app_exception
 
     contenido_pdf = resultado.content
-    enviar_email(config, contenido_pdf)
+    _enviar_email(config, contenido_pdf)
 
 
-def enviar_email(config: ReportesConfig, contenido_pdf: bytes):
+def _enviar_email(config: ReportesConfig, contenido_pdf: bytes):
     '''
     Envia el email para terminar con el proceso
     '''

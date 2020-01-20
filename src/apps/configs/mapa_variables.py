@@ -12,6 +12,7 @@ mapa_variables = {
 
     'TAIGA_HOST': 'https://taiga.leafnoise.io/',
     'API_TAIGA_TAREAS': 'api/v1/userstories/csv?uuid=',
+    'API_TAIGA_SUB_TAREAS': 'api/v1/tasks/csv?uuid=',
 
     'DIRECTORIO_ARCHIVO_CONFIG': 'configs/',
     'NOMBRE_ARCHIVO_CONFIG': 'taiga-reportes.json',

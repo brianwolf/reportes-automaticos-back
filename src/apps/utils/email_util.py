@@ -19,11 +19,11 @@ def enviar_email(email_a_enviar: EmailModelo):
     text = _preparar_email(email_a_enviar)
     context = ssl.create_default_context()
 
-    # receiver_email = ', '.join(email_a_enviar.para)
-
     server = smtplib.SMTP_SSL(_SMT_HOST, _SMT_PORT, context=context)
     server.login(email_a_enviar.de, email_a_enviar.contrasenia)
-    server.sendmail(email_a_enviar.de, email_a_enviar.para, text)
+
+    destinatarios = email_a_enviar.para + email_a_enviar.copia
+    server.sendmail(email_a_enviar.de, destinatarios, text)
 
 
 def _preparar_email(email_a_enviar: EmailModelo) -> str:

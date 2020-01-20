@@ -34,14 +34,3 @@ class EmailModelo(object):
     @staticmethod
     def from_dict(d: dict):
         return Email(**d)
-
-    @staticmethod
-    def lista_a_str(lista: List[str]) -> str:
-        '''
-        Devuelve una lista de str convertida en un str con los elementos separados por ","
-        '''
-        resultado = ''
-        for l in lista:
-            resultado += l + ','
-
-        return resultado[:-1]

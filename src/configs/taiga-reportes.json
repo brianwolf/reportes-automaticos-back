@@ -2,7 +2,8 @@
     {
         "nombre": "Reportes actividades java",
         "cron": "* * * * *",
-        "uuid_csv": "2246530810474ccebc7df09086f824c7",
+        "uuid_tareas": "2246530810474ccebc7df09086f824c7",
+        "uuid_sub_tareas": "0dc37876bd9047a0b5f8834341ac43b9",
         "url_generar_reporte": "/api/v1/conversores/carpeta/java-anses/html/template/pdf/reporte-tareas-java?guardar=false",
         "email_taiga": {
             "destinatarios": [
@@ -11,16 +12,27 @@
             "copiados": []
         },
         "filtros": {
-            "proyectos": [],
-            "personas": [],
-            "estados": [
-                "Hechas"
-            ],
-            "prioridades": [],
-            "campos_mostrados": [
-                "subject",
-                "description"
-            ]
+            "tareas": {
+                "proyectos": [],
+                "personas": [],
+                "estados": [
+                    "Hechas"
+                ],
+                "prioridades": [],
+                "campos_mostrados": [
+                    "subject",
+                    "description",
+                    "tasks"
+                ]
+            },
+            "subtareas": {
+                "estados": [],
+                "personas": [],
+                "campos_mostrados": [
+                    "subject",
+                    "description"
+                ]
+            }
         }
     }
 ]
