@@ -20,7 +20,7 @@ def generar_todos_los_reportes_manualmente():
 
 
 @blue_print.route('/reportes/tareas/json', methods=['POST'])
-def generar_reporte_json(uuid_tareas=UUID, uuid_subtareas=UUID):
+def generar_reporte_json():
 
     json_entrada = request.get_json()
 

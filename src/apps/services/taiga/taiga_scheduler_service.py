@@ -25,7 +25,7 @@ _GENERADOR_PDF_HOST = var.get('GENERADOR_PDF_HOST')
 
 
 class Errores(Enum):
-    SERVICIO_URL_REPORTE = 'SERVICIO_URL_REPORTE'
+    SERVICIO_GENERAR_REPORTE = 'SERVICIO_GENERAR_REPORTE'
 
 
 def _funcion():
@@ -80,9 +80,15 @@ def generar_reporte(config: ReportesConfig):
     url_completa = _GENERADOR_PDF_HOST + config.url_generar_reporte
     get_logger().info(f'Ejecutando REST con url -> {url_completa}')
 
-    headers = {'content-type': 'application/json'}
-    resultado = requests.post(
-        url_completa, data=json.dumps(reporte_json), headers=headers)
+    try:
+        headers = {'content-type': 'application/json'}
+        resultado = requests.post(url_completa,
+                                  data=json.dumps(reporte_json),
+                                  headers=headers)
+    except Exception:
+        mensaje = 'Error desconocido en el servicio de para generar el reporte'
+        get_logger().error(mensaje, exc_info=True)
+        raise AppException(Errores.SERVICIO_URL_REPORTE, mensaje)
 
     if resultado.status_code != 200:
         mensaje = f'Error servicio generar reporte -> URL: {url_completa}, STATUS: {resultado.status_code}, BODY: {resultado.text}'
