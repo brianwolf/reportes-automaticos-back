@@ -96,15 +96,16 @@ def generar_reporte(config: ReportesConfig):
         get_logger().error(app_exception.to_dict())
         raise app_exception
 
-    contenido_pdf = resultado.content
-    _enviar_email(config, contenido_pdf)
+    contenido_reporte = resultado.content
+
+    _enviar_email(config, contenido_reporte)
 
 
-def _enviar_email(config: ReportesConfig, contenido_pdf: bytes):
+def _enviar_email(config: ReportesConfig, contenido_reporte: bytes):
     '''
     Envia el email para terminar con el proceso
     '''
-    nombre_archivo = f'reporte-{config.nombre}-{date.today()}.pdf'
+    nombre_archivo = f'reporte-{config.nombre}-{date.today()}.md'
     encabezado = f'Entrega reporte mensual de {config.nombre} a la fecha {date.today()}'
     cuerpo = f'Muy buenos dias, mediante la presente les hago entrega del reporte mensual, saludos cordiales.'
 
@@ -116,7 +117,7 @@ def _enviar_email(config: ReportesConfig, contenido_pdf: bytes):
                                  copia=config.email_taiga.copiados,
                                  adjuntos=[(
                                      nombre_archivo,
-                                     contenido_pdf,
+                                     contenido_reporte,
                                  )])
 
     email_util.enviar_email(email_a_enviar)
