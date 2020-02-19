@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "5fc1cea8-501c-4579-ad5f-be0d7da496b7",
+		"name": "reportes-automaticos-back",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "config",
+			"item": [
+				{
+					"name": "cargar config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/taiga/configs/reportes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"taiga",
+								"configs",
+								"reportes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "subir config",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"cron\": \"* 9 19 * *\",\n        \"email_taiga\": {\n            \"copiados\": [\n                \"brian.lobo@moorea.io\",\n                \"alexis.taberna@moorea.io\",\n                \"jluchini@moorea.io\"\n            ],\n            \"destinatarios\": [\n                \"francisco@moorea.io, mmartin@moorea.io\"\n            ]\n        },\n        \"filtros\": {\n            \"campos_mostrados\": [\n                \"subject\",\n                \"description\"\n            ],\n            \"estados\": [\n                \"Hechas\"\n            ],\n            \"personas\": [],\n            \"prioridades\": [],\n            \"proyectos\": []\n        },\n        \"nombre\": \"Reporte de actividades Java\",\n        \"url_generar_reporte\": \"/api/v1/conversores/carpeta/java-anses/html/template/pdf/reporte-tareas-java?guardar=false\",\n        \"uuid_csv\": \"2246530810474ccebc7df09086f824c7\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/taiga/configs/reportes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"taiga",
+								"configs",
+								"reportes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar config",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"cron\": \"* 9 19 * *\",\n        \"email_taiga\": {\n            \"copiados\": [\n                \"brian.lobo@moorea.io\",\n                \"alexis.taberna@moorea.io\",\n                \"jluchini@moorea.io\"\n            ],\n            \"destinatarios\": [\n                \"francisco@moorea.io, mmartin@moorea.io\"\n            ]\n        },\n        \"filtros\": {\n            \"campos_mostrados\": [\n                \"subject\",\n                \"description\"\n            ],\n            \"estados\": [\n                \"Hechas\"\n            ],\n            \"personas\": [],\n            \"prioridades\": [],\n            \"proyectos\": []\n        },\n        \"nombre\": \"Reporte de actividades Java\",\n        \"url_generar_reporte\": \"/api/v1/conversores/carpeta/java-anses/html/template/pdf/reporte-tareas-java?guardar=false\",\n        \"uuid_csv\": \"2246530810474ccebc7df09086f824c7\"\n    }\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/taiga/configs/reportes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"taiga",
+								"configs",
+								"reportes"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "csv",
+			"item": [
+				{
+					"name": "csv de tareas en json",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/taiga/csv/tareas/2246530810474ccebc7df09086f824c7/json",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"taiga",
+								"csv",
+								"tareas",
+								"2246530810474ccebc7df09086f824c7",
+								"json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "csv reporte json",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"tareas\": {\n        \"proyectos\": [],\n        \"personas\": [],\n        \"estados\": [\n            \"Hechas\"\n        ],\n        \"prioridades\": [],\n        \"campos_mostrados\": [\n            \"subject\",\n            \"description\",\n            \"tasks\"\n        ]\n    },\n    \"subtareas\": {\n        \"estados\": [],\n        \"personas\": [],\n        \"campos_mostrados\": [\n            \"subject\",\n            \"description\"\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/taiga/csv/tareas/2246530810474ccebc7df09086f824c7/subtareas/0dc37876bd9047a0b5f8834341ac43b9/reporte",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"taiga",
+								"csv",
+								"tareas",
+								"2246530810474ccebc7df09086f824c7",
+								"subtareas",
+								"0dc37876bd9047a0b5f8834341ac43b9",
+								"reporte"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "csv de subtareas en json",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/taiga/csv/subtareas/0dc37876bd9047a0b5f8834341ac43b9/json",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"taiga",
+								"csv",
+								"subtareas",
+								"0dc37876bd9047a0b5f8834341ac43b9",
+								"json"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "ejecutar proceso automatico manualmente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/v1/taiga/generador/ejecutar/todos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"v1",
+						"taiga",
+						"generador",
+						"ejecutar",
+						"todos"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e2a4e102-b680-41a4-8e42-9bbd4fdaa1cc",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "ff64be4a-0a3c-4a61-978c-a49ffc72d8eb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
