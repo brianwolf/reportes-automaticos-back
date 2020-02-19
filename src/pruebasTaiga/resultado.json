@@ -1,0 +1,467 @@
+{
+    "epics": [],
+    "wikipages": [],
+    "userstories": [
+        {
+            "id": 10,
+            "ref": 1,
+            "subject": "Agregar los java docs a todos los metodos de los templates, como los de la clase configurationVars, por ejemplo",
+            "status": 54,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 20,
+            "ref": 22,
+            "subject": "Hacer un refactor de la forma en que se trabajan los workers de spring",
+            "status": 50,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 21,
+            "ref": 26,
+            "subject": "Hacer health checker de servicios",
+            "status": 55,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 22,
+            "ref": 34,
+            "subject": "Agregar las utils de beans e introspection",
+            "status": 57,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 13,
+            "ref": 8,
+            "subject": "Hacer algo que genere las Collections de Postman a trav\u00e9s de los proyectos java",
+            "status": 50,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 23,
+            "ref": 39,
+            "subject": "Ver bot de jenkins",
+            "status": 50,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 14,
+            "ref": 9,
+            "subject": "Hacer generador de informes a trav\u00e9s de tareas de trello",
+            "status": 50,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 15,
+            "ref": 12,
+            "subject": "usar http://yeoman.io/learning para generar proyectos de spring boot similares",
+            "status": 57,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 16,
+            "ref": 13,
+            "subject": "Mejorara la tarea de jenkins para borrar properties de Java",
+            "status": 50,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 516,
+            "ref": 110,
+            "subject": "Incorporar ambientes en los arquetipos de proyecto",
+            "status": 50,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 780,
+            "ref": 118,
+            "subject": "TODOS: mejorar PDF util para los proyectos",
+            "status": 57,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2102,
+            "ref": 163,
+            "subject": "Hacer esqueleto de proyecto PNCIL",
+            "status": 54,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2152,
+            "ref": 166,
+            "subject": "VARIOS: Separar los templates de las utils para trabajarlas mejor",
+            "status": 57,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2153,
+            "ref": 167,
+            "subject": "VARIOS: Migrar los todos los proyectos de java a spring v2",
+            "status": 50,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2398,
+            "ref": 186,
+            "subject": "DIGI2: mejoras en digi2-back",
+            "status": 57,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2402,
+            "ref": 191,
+            "subject": "MOOREA-FILES: Agregar firma con huella digital",
+            "status": 54,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2454,
+            "ref": 207,
+            "subject": "SADIL: crear servicios rest simples para probar la invocacion de soap",
+            "status": 57,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2467,
+            "ref": 209,
+            "subject": "SADIL: crear un endpoint rest para probar digiweb",
+            "status": 51,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2469,
+            "ref": 211,
+            "subject": "SADIL: pedir la coneccion con la base de datos de db2",
+            "status": 51,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2470,
+            "ref": 212,
+            "subject": "SADIL: Probar los soap en anses para tener un ejemplo de respuesta",
+            "status": 54,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2475,
+            "ref": 214,
+            "subject": "SADIL: hacer un merge del repo de gitlab al de anses",
+            "status": 51,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2482,
+            "ref": 215,
+            "subject": "SADIL: jugar con zips",
+            "status": 54,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2484,
+            "ref": 216,
+            "subject": "SIDU: seguir el flujo de un servicio en flex",
+            "status": 52,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2492,
+            "ref": 217,
+            "subject": "SADIL: Manipulaci\u00f3n de XML",
+            "status": 54,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2493,
+            "ref": 218,
+            "subject": "SADIL: Validaci\u00f3n de CUDs",
+            "status": 54,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2494,
+            "ref": 219,
+            "subject": "SADIL: Validaci\u00f3n de campos del certificado",
+            "status": 54,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2495,
+            "ref": 220,
+            "subject": "SADIL: Guardado de PDFs en digiweb",
+            "status": 54,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2496,
+            "ref": 221,
+            "subject": "SADIL: Mapeo de objetos con tablas de DB2",
+            "status": 51,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2497,
+            "ref": 222,
+            "subject": "SADIL: Obtenci\u00f3n de CUILs:",
+            "status": 52,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2508,
+            "ref": 223,
+            "subject": "VARIOS: homologar la util de PDF de anses-evidence-index",
+            "status": 57,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2520,
+            "ref": 224,
+            "subject": "VARIOS: auditar pedido de acceso a logs productivos en anses",
+            "status": 51,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        },
+        {
+            "id": 2523,
+            "ref": 225,
+            "subject": "Plugin Organica imanager",
+            "status": 52,
+            "total_points": null,
+            "milestone_name": null,
+            "milestone_slug": null
+        }
+    ],
+    "tasks": [
+        {
+            "id": 9,
+            "ref": 10,
+            "subject": "Crear generador de pdf a trav\u00e9s de json",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 10,
+            "ref": 11,
+            "subject": "Servicio que obtenga info para informe de tareas de trello y llame a generador de pdf",
+            "status": 42,
+            "assigned_to": null
+        },
+        {
+            "id": 16,
+            "ref": 23,
+            "subject": "manteniendo la misma estructura, volar el **while true** y poner algo mas lindo",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 17,
+            "ref": 24,
+            "subject": "hacer una version de proyecto template para las utils con esto, mostrando la forma mas amigable de usarlo",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 18,
+            "ref": 25,
+            "subject": "pasar todo por sonar y que quede lindo, ahora no lo gusta el while true",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 19,
+            "ref": 27,
+            "subject": "JVM",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 20,
+            "ref": 28,
+            "subject": "Redis",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 21,
+            "ref": 29,
+            "subject": "SQL",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 22,
+            "ref": 30,
+            "subject": "SOAP",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 23,
+            "ref": 31,
+            "subject": "MongoDB",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 24,
+            "ref": 32,
+            "subject": "Druid",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 25,
+            "ref": 33,
+            "subject": "Kafka",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 26,
+            "ref": 35,
+            "subject": "Crear una rama en las utils",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 27,
+            "ref": 36,
+            "subject": "Subir la utlima version de Instrospection",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 28,
+            "ref": 37,
+            "subject": "Subir la ultima version de Beans",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 29,
+            "ref": 38,
+            "subject": "Agregarle la documentacion a los 2 y una estructura \"linda\" (con interface y todo)",
+            "status": 41,
+            "assigned_to": null
+        },
+        {
+            "id": 1216,
+            "ref": 187,
+            "subject": "Agregar la property en el proyecto de spring para que deje de loguear las queries de hibernate",
+            "status": 42,
+            "assigned_to": 44
+        },
+        {
+            "id": 1217,
+            "ref": 188,
+            "subject": "Fix problemas de fecha para el proceso de borrar archivos caducados, los archivos quedan caducados en el momento en que son creados",
+            "status": 42,
+            "assigned_to": 44
+        },
+        {
+            "id": 1218,
+            "ref": 189,
+            "subject": "Agregar una fecha maxima para que caduquen los archivos en las configuraciones predefinidas",
+            "status": 42,
+            "assigned_to": 44
+        },
+        {
+            "id": 1219,
+            "ref": 190,
+            "subject": "generar una nueva version en docker hub",
+            "status": 42,
+            "assigned_to": 44
+        },
+        {
+            "id": 1312,
+            "ref": 226,
+            "subject": "Refactorizar plugin",
+            "status": 42,
+            "assigned_to": null
+        },
+        {
+            "id": 1313,
+            "ref": 227,
+            "subject": "Ver recursos montados de 10.8.15.66 (qa)",
+            "status": 42,
+            "assigned_to": null
+        },
+        {
+            "id": 1314,
+            "ref": 228,
+            "subject": "Hablar con Mario para homologar txt de PROD con el de QA para asi poder levantarlo en el recurso que convenga para que pueda ser actualizado",
+            "status": 41,
+            "assigned_to": null
+        }
+    ],
+    "issues": [
+        {
+            "id": 37,
+            "ref": 119,
+            "subject": "asd",
+            "status": 58,
+            "assigned_to": 44
+        }
+    ],
+    "count": 56
+}
