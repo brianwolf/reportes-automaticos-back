@@ -13,7 +13,7 @@ logger = get_logger()
 @blue_print.route('/variables')
 def variables():
     respuesta = {}
-    for clave, valor in _predefinidas.items():
+    for clave in _predefinidas.keys():
         respuesta[clave] = var.get(Var(clave))
 
     return jsonify(respuesta)
