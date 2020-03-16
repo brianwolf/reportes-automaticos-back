@@ -3,12 +3,13 @@ from uuid import UUID
 
 from flask import Blueprint, jsonify, request, send_file
 
-import apps.configs.variables as var
-import apps.services.taiga.taiga_service as taiga_service
-import apps.services.taiga.taiga_scheduler_service as taiga_scheduler_service
-from apps.models.taiga import Filtros, ReportesConfig
+import src.configs.lector_variables as var
+import src.services.taiga.taiga_scheduler_service as taiga_scheduler_service
+import src.services.taiga.taiga_service as taiga_service
+from src.models.taiga import Filtros, ReportesConfig
 
-blue_print = Blueprint('taiga_generador', __name__,
+blue_print = Blueprint('taiga_generador',
+                       __name__,
                        url_prefix='/api/v1/taiga/generador')
 
 
@@ -30,4 +31,5 @@ def generar_reporte_json():
 
     diccionario = taiga_service.generar_reporte_proyectos_json(
         uuid_tareas, uuid_subtareas, filtros)
+
     return jsonify(diccionario)

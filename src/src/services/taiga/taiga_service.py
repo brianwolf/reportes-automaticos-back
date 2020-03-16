@@ -4,16 +4,17 @@ from uuid import UUID
 
 import pip._vendor.requests as requests
 
-import apps.configs.variables as var
-import apps.utils.tareas_util as tareas_util
-from apps.configs.loggers import get_logger
-from apps.models.errores import AppException
-from apps.models.taiga import Filtros, ReportesConfig
-from apps.utils.csv_util import csv_a_diccionario
+import src.configs.lector_variables as var
+from src.configs.variables import Var
+import src.utils.tareas_util as tareas_util
+from src.configs.loggers import get_logger
+from src.models.errores import AppException
+from src.models.taiga import Filtros, ReportesConfig
+from src.utils.csv_util import csv_a_diccionario
 
-_TAIGA_HOST = var.get('TAIGA_HOST')
-_API_TAIGA_TAREAS = var.get('API_TAIGA_TAREAS')
-_API_TAIGA_SUB_TAREAS = var.get('API_TAIGA_SUBTAREAS')
+_TAIGA_HOST = var.get(Var.TAIGA_HOST)
+_API_TAIGA_TAREAS = var.get(Var.API_TAIGA_TAREAS)
+_API_TAIGA_SUB_TAREAS = var.get(Var.API_TAIGA_SUBTAREAS)
 
 
 class Errores(Enum):
@@ -71,8 +72,9 @@ def generar_reporte_json(config: ReportesConfig) -> dict:
     '''
     Genera el reporte con la configuracion enviada
     '''
-    proyectos = generar_reporte_proyectos_json(
-        config.uuid_tareas, config.uuid_sub_tareas, config.filtros)
+    proyectos = generar_reporte_proyectos_json(config.uuid_tareas,
+                                               config.uuid_sub_tareas,
+                                               config.filtros)
 
     return {
         'titulo': config.nombre,
@@ -81,7 +83,8 @@ def generar_reporte_json(config: ReportesConfig) -> dict:
     }
 
 
-def generar_reporte_proyectos_json(uuid_tareas: UUID, uuid_sub_tareas: UUID, filtros: Filtros) -> dict:
+def generar_reporte_proyectos_json(uuid_tareas: UUID, uuid_sub_tareas: UUID,
+                                   filtros: Filtros) -> dict:
     '''
     Genera un json con el formato de reporte, que es un diccionario 
     con claves iguales a los proyectos y sus valores las tareas de ese proyecto
@@ -99,8 +102,10 @@ def generar_reporte_proyectos_json(uuid_tareas: UUID, uuid_sub_tareas: UUID, fil
     for proyecto in tareas_agrupadas:
 
         for tarea in proyecto['tareas']:
-            tarea[tareas_util._CLAVE_SUB_TAREAS] = tareas_util.filtrar_campos_mostrados(
-                tarea[tareas_util._CLAVE_SUB_TAREAS], filtros.subtareas.campos_mostrados)
+            tarea[tareas_util.
+                  _CLAVE_SUB_TAREAS] = tareas_util.filtrar_campos_mostrados(
+                      tarea[tareas_util._CLAVE_SUB_TAREAS],
+                      filtros.subtareas.campos_mostrados)
 
         proyecto['tareas'] = tareas_util.filtrar_campos_mostrados(
             proyecto['tareas'], filtros.tareas.campos_mostrados)

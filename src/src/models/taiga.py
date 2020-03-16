@@ -1,15 +1,13 @@
+from dataclasses import dataclass, field
 from typing import List
 from uuid import UUID
 
 
-class FiltrosAbstracto(object):
-    def __init__(self,
-                 personas: List[str] = [],
-                 estados: List[str] = [],
-                 campos_mostrados: List[str] = []):
-        self.personas = personas
-        self.estados = estados
-        self.campos_mostrados = campos_mostrados
+@dataclass
+class FiltrosAbstracto:
+    personas: List[str] = field(default_factory=list)
+    estados: List[str] = field(default_factory=list)
+    campos_mostrados: List[str] = field(default_factory=list)
 
     def to_dict(self):
         return {
@@ -19,16 +17,13 @@ class FiltrosAbstracto(object):
         }
 
 
+@dataclass
 class FiltrosTareas(FiltrosAbstracto):
-    def __init__(self,
-                 proyectos: List[str] = [],
-                 personas: List[str] = [],
-                 estados: List[str] = [],
-                 prioridades: List[str] = [],
-                 campos_mostrados: List[str] = []):
-        super().__init__(personas, estados, campos_mostrados)
-        self.proyectos = proyectos
-        self.prioridades = prioridades
+    proyectos: List[str] = field(default_factory=list)
+    personas: List[str] = field(default_factory=list)
+    estados: List[str] = field(default_factory=list)
+    prioridades: List[str] = field(default_factory=list)
+    campos_mostrados: List[str] = field(default_factory=list)
 
     def to_dict(self):
         d = super().to_dict()
@@ -43,12 +38,11 @@ class FiltrosTareas(FiltrosAbstracto):
         return FiltrosTareas(**d)
 
 
+@dataclass
 class FiltrosSubTareas(FiltrosAbstracto):
-    def __init__(self,
-                 personas: List[str] = [],
-                 estados: List[str] = [],
-                 campos_mostrados: List[str] = []):
-        super().__init__(personas, estados, campos_mostrados)
+    personas: List[str] = field(default_factory=list)
+    estados: List[str] = field(default_factory=list)
+    campos_mostrados: List[str] = field(default_factory=list)
 
     def to_dict(self):
         return super().to_dict()
@@ -58,10 +52,9 @@ class FiltrosSubTareas(FiltrosAbstracto):
         return FiltrosSubTareas(**d)
 
 
-class Filtros(object):
-    def __init__(self,
-                 tareas: FiltrosTareas,
-                 subtareas: FiltrosSubTareas):
+@dataclass
+class Filtros:
+    def __init__(self, tareas: FiltrosTareas, subtareas: FiltrosSubTareas):
         self.tareas = tareas
         self.subtareas = subtareas
 
@@ -92,16 +85,13 @@ class EmailTaiga(object):
 
 
 class ReportesConfig(object):
-    def __init__(self, nombre: str, cron: str, filtros: Filtros,
-                 uuid_tareas: UUID, uuid_sub_tareas: UUID, url_generar_reporte: str,
-                 email_taiga: EmailTaiga):
-        self.nombre = nombre
-        self.cron = cron
-        self.filtros = filtros
-        self.uuid_tareas = uuid_tareas
-        self.uuid_sub_tareas = uuid_sub_tareas
-        self.url_generar_reporte = url_generar_reporte
-        self.email_taiga = email_taiga
+    nombre: str
+    cron: str
+    filtros: Filtros
+    uuid_tareas: UUID
+    uuid_sub_tareas: UUID
+    url_generar_reporte: str
+    email_taiga: EmailTaiga
 
     def to_dict(self):
         return {

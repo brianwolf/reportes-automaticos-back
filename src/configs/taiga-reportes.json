@@ -4,7 +4,7 @@
         "cron": "* * * * *",
         "uuid_tareas": "2246530810474ccebc7df09086f824c7",
         "uuid_sub_tareas": "0dc37876bd9047a0b5f8834341ac43b9",
-        "url_generar_reporte": "/api/v1/conversores/carpeta/java-anses/html/template/pdf/reporte-tareas-java?guardar=false",
+        "url_generar_reporte": "/api/v1/conversores/carpeta/java-anses/md/template/md/reporte-tareas-java?guardar=false",
         "email_taiga": {
             "destinatarios": [
                 "brian.lobo@moorea.io"
@@ -32,6 +32,13 @@
                     "subject",
                     "description"
                 ]
+            }
+        },
+        "guardado": {
+            "git": {
+                "url": "asd",
+                "user": "asd",
+                "token": "asd"
             }
         }
     }

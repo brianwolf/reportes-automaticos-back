@@ -4,12 +4,13 @@ import shutil
 from typing import Dict, List
 from uuid import uuid4
 
-import apps.configs.variables as var
-from apps.configs.loggers import get_logger
-from apps.models.taiga import ReportesConfig
+import src.configs.lector_variables as var
+from src.configs.variables import Var
+from src.configs.loggers import get_logger
+from src.models.taiga import ReportesConfig
 
-_NOMBRE_ARCHIVO_CONFIG = var.get('NOMBRE_ARCHIVO_CONFIG')
-_DIRECTORIO_ARCHIVO_CONFIG = var.get('DIRECTORIO_ARCHIVO_CONFIG')
+_NOMBRE_ARCHIVO_CONFIG = var.get(Var.NOMBRE_ARCHIVO_CONFIG)
+_DIRECTORIO_ARCHIVO_CONFIG = var.get(Var.DIRECTORIO_ARCHIVO_CONFIG)
 
 
 def guardar_json_config(lista_configs: List[ReportesConfig]):

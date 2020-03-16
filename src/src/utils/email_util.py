@@ -5,8 +5,9 @@ from email import encoders
 from email.mime.base import MIMEBase
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from apps.models.emails import EmailModelo
 from typing import List, Tuple
+
+from src.models.emails import EmailModelo
 
 _SMT_HOST = 'smtp.gmail.com'
 _SMT_PORT = 465

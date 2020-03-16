@@ -1,7 +1,7 @@
 import re
 from typing import Dict, List
 
-from apps.models.taiga import FiltrosSubTareas, FiltrosTareas, Filtros
+from src.models.taiga import FiltrosSubTareas, FiltrosTareas, Filtros
 
 _CLAVE_TAGS = 'tags'
 _CLAVE_PERSONAS = 'assigned_to_full_name'

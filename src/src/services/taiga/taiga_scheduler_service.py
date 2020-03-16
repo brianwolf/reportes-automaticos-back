@@ -6,22 +6,23 @@ from typing import List
 import requests
 from apscheduler.job import Job
 
-import apps.configs.variables as var
-import apps.utils.email_util as email_util
-import apps.utils.scheduler_util as scheduler_util
-from apps.configs.loggers import get_logger
-from apps.models.emails import EmailModelo
-from apps.models.errores import AppException
-from apps.models.taiga import EmailTaiga, ReportesConfig
-from apps.services.taiga.taiga_reportes_config_service import \
+import src.configs.lector_variables as var
+import src.utils.email_util as email_util
+import src.utils.scheduler_util as scheduler_util
+from src.configs.loggers import get_logger
+from src.configs.variables import Var
+from src.models.emails import EmailModelo
+from src.models.errores import AppException
+from src.models.taiga import EmailTaiga, ReportesConfig
+from src.services.taiga.taiga_reportes_config_service import \
     obtener_json_config
-from apps.services.taiga.taiga_service import generar_reporte_json
+from src.services.taiga.taiga_service import generar_reporte_json
 
 _sched = scheduler_util.crear_scheduler()
 
-_EMAIL_ENVIADOR = var.get('EMAIL_ENVIADOR')
-_EMAIL_PASS = var.get('EMAIL_PASS')
-_GENERADOR_PDF_HOST = var.get('GENERADOR_PDF_HOST')
+_EMAIL_ENVIADOR = var.get(Var.EMAIL_ENVIADOR)
+_EMAIL_PASS = var.get(Var.EMAIL_PASS)
+_GENERADOR_PDF_HOST = var.get(Var.GENERADOR_PDF_HOST)
 
 
 class Errores(Enum):
