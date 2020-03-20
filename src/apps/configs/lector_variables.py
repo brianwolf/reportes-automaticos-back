@@ -1,5 +1,5 @@
 import os
-from src.configs.variables import _predefinidas, _no_mostrar, Var
+from apps.configs.variables import _predefinidas, _no_mostrar, Var
 
 
 def get(variable: Var) -> str:

@@ -1,55 +1,29 @@
-from dataclasses import dataclass
-from copy import deepcopy
+import os
+import re
+
+from git import Git, Repo
+
+_REPO_PATH = '/home/brian/Descargas/pruebas/'
+
+_REPO_GIT_URL = 'https://github.com/brianwolf/python-script.git'
+_REPO_GIT_USER = 'brianwolf'
+_REPO_GIT_PASS = '5cd8d70b68c87bb3c905b247d64f17456232efa8'
 
 
-@dataclass
-class AppModel:
-    def to_dict(self):
-
-        self_dict = deepcopy(self.__dict__)
-
-        for key, value in self.__dict__.items():
-
-            if hasattr(value.__class__, 'to_dict'):
-                self_dict[key] = value.to_dict()
-
-        for attrname in dir(self.__class__):
-            if isinstance(getattr(self.__class__, attrname), property):
-                self_dict[attrname] = getattr(self, attrname)
-
-        return self_dict
+def _obtener_nombre_repo(url: str) -> str:
+    '''
+    '''
+    m = re.search(r'[^\/]+(\.git)', url)
+    return m.group(0).replace('.git', '')
 
 
-@dataclass
-class Mascota(AppModel):
-    nombre: str
+def clonar_repo_git(ruta: str, url: str, usuario: str, contrasenia: str) -> Repo:
+    '''
+    '''
+    url_repo = url.replace('https://', '')
+    url_git_final = f'https://{usuario}:{contrasenia}@{url_repo}'
 
-    __attr_class = [str, int]
+    nombre_repo = _obtener_nombre_repo(url)
+    ruta_repo_final = os.path.join(ruta, nombre_repo)
 
-
-@dataclass
-class Persona(AppModel):
-    nombre: str
-    edad: int
-    mascota: Mascota
-
-    @property
-    def esta_vivo(self) -> bool:
-        return True
-
-
-@dataclass
-class Alumno(Persona):
-    legajo: str
-
-
-yo = Alumno(legajo='1496414',
-            nombre='brian',
-            edad=26,
-            mascota=Mascota('Terry'))
-
-# print(yo.__dict__)
-# print(yo.to_dict())
-# print(yo.__dict__)
-
-print(Mascota.__attr_class)
+    return Repo.clone_from(url_git_final, ruta_repo_final)

@@ -1,8 +1,8 @@
 import logging
 import os
 
-import src.configs.lector_variables as var
-from src.configs.variables import Var
+import apps.configs.lector_variables as var
+from apps.configs.variables import Var
 
 DIRECTORIO_LOGS = var.get(Var.DIRECTORIO_LOGS)
 NOMBRE_LOG_PREDEFINIDO = var.get(Var.NOMBRE_LOG_PREDEFINIDO)

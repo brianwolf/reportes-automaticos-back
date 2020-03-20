@@ -4,10 +4,10 @@ import shutil
 from typing import Dict, List
 from uuid import uuid4
 
-import src.configs.lector_variables as var
-from src.configs.variables import Var
-from src.configs.loggers import get_logger
-from src.models.taiga import ReportesConfig
+import apps.configs.lector_variables as var
+from apps.configs.variables import Var
+from apps.configs.loggers import get_logger
+from apps.models.taiga import ReportesConfig
 
 _NOMBRE_ARCHIVO_CONFIG = var.get(Var.NOMBRE_ARCHIVO_CONFIG)
 _DIRECTORIO_ARCHIVO_CONFIG = var.get(Var.DIRECTORIO_ARCHIVO_CONFIG)
@@ -45,7 +45,7 @@ def obtener_json_config() -> List[ReportesConfig]:
         return [ReportesConfig.from_dict(config) for config in json_config]
 
     except Exception as e:
-        get_logger().error(str(e))
+        get_logger().exception(e)
         return []
 
 

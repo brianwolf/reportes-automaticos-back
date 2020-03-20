@@ -33,13 +33,6 @@
                     "description"
                 ]
             }
-        },
-        "guardado": {
-            "git": {
-                "url": "asd",
-                "user": "asd",
-                "token": "asd"
-            }
         }
     }
 ]

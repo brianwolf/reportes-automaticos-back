@@ -3,10 +3,10 @@ from uuid import UUID
 
 from flask import Blueprint, jsonify, request, send_file
 
-import src.configs.lector_variables as var
-import src.services.taiga.taiga_scheduler_service as taiga_scheduler_service
-import src.services.taiga.taiga_service as taiga_service
-from src.models.taiga import Filtros, ReportesConfig
+import apps.configs.lector_variables as var
+import apps.services.taiga.taiga_scheduler_service as taiga_scheduler_service
+import apps.services.taiga.taiga_service as taiga_service
+from apps.models.taiga import Filtros, ReportesConfig
 
 blue_print = Blueprint('taiga_generador',
                        __name__,

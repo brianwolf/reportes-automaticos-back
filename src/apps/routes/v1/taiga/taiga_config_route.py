@@ -2,8 +2,8 @@ import json
 
 from flask import Blueprint, jsonify, request, send_file
 
-import src.services.taiga.taiga_reportes_config_service as taiga_reportes_config_service
-from src.models.taiga import Filtros, ReportesConfig
+import apps.services.taiga.taiga_reportes_config_service as taiga_reportes_config_service
+from apps.models.taiga import Filtros, ReportesConfig
 
 blue_print = Blueprint('taiga_configuraciones',
                        __name__,

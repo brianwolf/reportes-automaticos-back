@@ -54,9 +54,8 @@ class FiltrosSubTareas(FiltrosAbstracto):
 
 @dataclass
 class Filtros:
-    def __init__(self, tareas: FiltrosTareas, subtareas: FiltrosSubTareas):
-        self.tareas = tareas
-        self.subtareas = subtareas
+    tareas: FiltrosTareas
+    subtareas: FiltrosSubTareas
 
     def to_dict(self):
         return {
@@ -71,10 +70,10 @@ class Filtros:
         return Filtros(tareas, subtareas)
 
 
-class EmailTaiga(object):
-    def __init__(self, destinatarios: List[str], copiados: List[str]):
-        self.destinatarios = destinatarios
-        self.copiados = copiados
+@dataclass
+class EmailTaiga:
+    destinatarios: List[str]
+    copiados: List[str]
 
     def to_dict(self):
         return {'destinatarios': self.destinatarios, 'copiados': self.copiados}
@@ -84,7 +83,8 @@ class EmailTaiga(object):
         return EmailTaiga(**d)
 
 
-class ReportesConfig(object):
+@dataclass
+class ReportesConfig:
     nombre: str
     cron: str
     filtros: Filtros

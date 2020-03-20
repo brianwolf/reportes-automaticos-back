@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from typing import List, Tuple
 
-from src.models.emails import EmailModelo
+from apps.models.emails import EmailModelo
 
 _SMT_HOST = 'smtp.gmail.com'
 _SMT_PORT = 465

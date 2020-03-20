@@ -4,13 +4,13 @@ from uuid import UUID
 
 import pip._vendor.requests as requests
 
-import src.configs.lector_variables as var
-from src.configs.variables import Var
-import src.utils.tareas_util as tareas_util
-from src.configs.loggers import get_logger
-from src.models.errores import AppException
-from src.models.taiga import Filtros, ReportesConfig
-from src.utils.csv_util import csv_a_diccionario
+import apps.configs.lector_variables as var
+from apps.configs.variables import Var
+import apps.utils.tareas_util as tareas_util
+from apps.configs.loggers import get_logger
+from apps.models.errores import AppException
+from apps.models.taiga import Filtros, ReportesConfig
+from apps.utils.csv_util import csv_a_diccionario
 
 _TAIGA_HOST = var.get(Var.TAIGA_HOST)
 _API_TAIGA_TAREAS = var.get(Var.API_TAIGA_TAREAS)

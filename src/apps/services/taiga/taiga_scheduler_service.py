@@ -6,17 +6,17 @@ from typing import List
 import requests
 from apscheduler.job import Job
 
-import src.configs.lector_variables as var
-import src.utils.email_util as email_util
-import src.utils.scheduler_util as scheduler_util
-from src.configs.loggers import get_logger
-from src.configs.variables import Var
-from src.models.emails import EmailModelo
-from src.models.errores import AppException
-from src.models.taiga import EmailTaiga, ReportesConfig
-from src.services.taiga.taiga_reportes_config_service import \
+import apps.configs.lector_variables as var
+import apps.utils.email_util as email_util
+import apps.utils.scheduler_util as scheduler_util
+from apps.configs.loggers import get_logger
+from apps.configs.variables import Var
+from apps.models.emails import EmailModelo
+from apps.models.errores import AppException
+from apps.models.taiga import EmailTaiga, ReportesConfig
+from apps.services.taiga.taiga_reportes_config_service import \
     obtener_json_config
-from src.services.taiga.taiga_service import generar_reporte_json
+from apps.services.taiga.taiga_service import generar_reporte_json
 
 _sched = scheduler_util.crear_scheduler()
 
@@ -86,9 +86,10 @@ def generar_reporte(config: ReportesConfig):
         resultado = requests.post(url_completa,
                                   data=json.dumps(reporte_json),
                                   headers=headers)
-    except Exception:
+    except Exception as e:
         mensaje = 'Error desconocido en el servicio de para generar el reporte'
         get_logger().error(mensaje, exc_info=True)
+        get_logger().exception(e)
         raise AppException(Errores.SERVICIO_URL_REPORTE, mensaje)
 
     if resultado.status_code != 200:
