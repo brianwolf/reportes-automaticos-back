@@ -5,7 +5,8 @@ from flask import Blueprint, jsonify, request, send_file
 import apps.services.taiga.taiga_reportes_config_service as taiga_reportes_config_service
 from apps.models.taiga import Filtros, ReportesConfig
 
-blue_print = Blueprint('taiga_configuraciones', __name__,
+blue_print = Blueprint('taiga_configuraciones',
+                       __name__,
                        url_prefix='/api/v1/taiga/configs')
 
 
@@ -20,8 +21,9 @@ def obtener_taiga_config():
 def actualizar_taiga_config():
 
     lista_diccionarios = request.get_json()
-    configs = [ReportesConfig.from_dict(config)
-               for config in lista_diccionarios]
+    configs = [
+        ReportesConfig.from_dict(config) for config in lista_diccionarios
+    ]
 
     taiga_reportes_config_service.actualizar_json_config(configs)
     return '', 200
@@ -31,8 +33,9 @@ def actualizar_taiga_config():
 def nueva_taiga_config():
 
     lista_diccionarios = request.get_json()
-    configs = [ReportesConfig.from_dict(config)
-               for config in lista_diccionarios]
+    configs = [
+        ReportesConfig.from_dict(config) for config in lista_diccionarios
+    ]
 
     taiga_reportes_config_service.guardar_json_config(configs)
     return '', 201

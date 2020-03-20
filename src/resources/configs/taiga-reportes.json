@@ -1,10 +1,10 @@
 [
     {
-        "nombre": "Reportes actividades java",
-        "cron": "* * * * *",
+        "nombre": "Proyectos Java Anses",
+        "cron": "* 9 19 * *",
         "uuid_tareas": "2246530810474ccebc7df09086f824c7",
         "uuid_sub_tareas": "0dc37876bd9047a0b5f8834341ac43b9",
-        "url_generar_reporte": "/api/v1/conversores/carpeta/java-anses/html/template/pdf/reporte-tareas-java?guardar=false",
+        "url_generar_reporte": "/api/v1/conversores/carpeta/java-anses/md/template/md/reporte-tareas-java?guardar=false",
         "email_taiga": {
             "destinatarios": [
                 "brian.lobo@moorea.io"
@@ -33,6 +33,11 @@
                     "description"
                 ]
             }
+        },
+        "git": {
+            "url_repo": "https://git.leafnoise.io/BrianLobo/repositorio-reportes-phantom.git",
+            "usuario": "BrianLobo",
+            "contrasenia": "i8vPxavbxmr7mM4xw7mA"
         }
     }
 ]

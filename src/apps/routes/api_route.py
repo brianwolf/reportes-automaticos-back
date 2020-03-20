@@ -1,6 +1,7 @@
 from flask import Blueprint, jsonify, request
 
-import apps.configs.variables as var
+import apps.configs.lector_variables as var
+from apps.configs.variables import Var, _predefinidas
 from apps.configs.loggers import get_logger
 from apps.models.errores import AppException
 
@@ -12,8 +13,8 @@ logger = get_logger()
 @blue_print.route('/variables')
 def variables():
     respuesta = {}
-    for key in var.mapa_variables.keys():
-        respuesta[key] = var.get(key)
+    for clave in _predefinidas.keys():
+        respuesta[clave] = var.get(Var(clave))
 
     return jsonify(respuesta)
 

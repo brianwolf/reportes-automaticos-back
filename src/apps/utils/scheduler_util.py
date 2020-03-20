@@ -1,8 +1,8 @@
 from typing import Callable
 
-from apscheduler.triggers.cron import CronTrigger
 from apscheduler.job import Job
 from apscheduler.schedulers.background import BackgroundScheduler
+from apscheduler.triggers.cron import CronTrigger
 
 _MAX_HILOS_POR_JOB = 3
 
