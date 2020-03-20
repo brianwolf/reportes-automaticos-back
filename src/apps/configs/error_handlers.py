@@ -16,7 +16,7 @@ def handle_exception(httpe):
 
 @error_handler_bp.app_errorhandler(Exception)
 def handle_exception(e):
-    get_logger().exception(str(e))
+    get_logger().exception(e)
     return '', HTTPStatus.INTERNAL_SERVER_ERROR
 
 

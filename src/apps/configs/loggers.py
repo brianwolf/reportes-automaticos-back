@@ -1,11 +1,12 @@
-import apps.configs.variables as var
-
 import logging
 import os
 
-DIRECTORIO_LOGS = var.get('DIRECTORIO_LOGS')
-NOMBRE_LOG_PREDEFINIDO = var.get('NOMBRE_LOG_PREDEFINIDO')
-NIVEL_LOGS = var.get('NIVEL_LOGS')
+import apps.configs.lector_variables as var
+from apps.configs.variables import Var
+
+DIRECTORIO_LOGS = var.get(Var.DIRECTORIO_LOGS)
+NOMBRE_LOG_PREDEFINIDO = var.get(Var.NOMBRE_LOG_PREDEFINIDO)
+NIVEL_LOGS = var.get(Var.NIVEL_LOGS)
 
 _loggers = {}
 

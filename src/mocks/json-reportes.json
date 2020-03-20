@@ -1,0 +1,53 @@
+{
+    "source": "mockoon:1.7.0",
+    "data": [
+        {
+            "type": "environment",
+            "item": {
+                "uuid": "",
+                "name": "Example",
+                "endpointPrefix": "",
+                "latency": 0,
+                "port": 5001,
+                "routes": [
+                    {
+                        "uuid": "",
+                        "documentation": "",
+                        "method": "post",
+                        "endpoint": "api/v1/conversores/carpeta/java-anses/md/template/md/reporte-tareas-java",
+                        "responses": [
+                            {
+                                "uuid": "",
+                                "statusCode": "200",
+                                "label": "reporte generado",
+                                "latency": 0,
+                                "filePath": "/home/brian/workspace/reportes-automaticos-back/src/mocks/2020-03-19 - Actividades Java.md",
+                                "sendFileAsBody": false,
+                                "headers": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                    }
+                                ],
+                                "body": "",
+                                "rules": []
+                            }
+                        ],
+                        "enabled": true
+                    }
+                ],
+                "proxyMode": false,
+                "proxyHost": "",
+                "https": false,
+                "cors": true,
+                "headers": [
+                    {
+                        "key": "",
+                        "value": ""
+                    }
+                ],
+                "lastMigration": 9
+            }
+        }
+    ]
+}

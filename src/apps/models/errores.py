@@ -1,3 +1,4 @@
+from dataclasses import dataclass
 from enum import Enum
 from functools import wraps
 
@@ -5,9 +6,10 @@ from flask import jsonify
 
 from apps.configs.loggers import get_logger
 
-HTTP_STATUS_ERROR_NEGOCIO = 409
+_HTTP_STATUS_ERROR_NEGOCIO = 409
 
 
+@dataclass
 class AppException(Exception):
     '''
     Clase de error basico para manejar errores de negocio o errores dentro de la aplicacion
@@ -28,4 +30,4 @@ class AppException(Exception):
         return {'codigo': self.codigo, 'mensaje': self.mensaje}
 
     def respuesta_json(self):
-        return jsonify(self.to_dict()), HTTP_STATUS_ERROR_NEGOCIO
+        return jsonify(self.to_dict()), _HTTP_STATUS_ERROR_NEGOCIO
