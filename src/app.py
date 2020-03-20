@@ -4,6 +4,7 @@ import os
 from flask import Flask, jsonify
 
 import apps.configs.lector_variables as var
+from apps.configs.loggers import get_logger
 import apps.services.taiga.taiga_scheduler_service as taiga_scheduler_service
 from apps.configs.error_handlers import error_handler_bp
 from apps.configs.variables import Var
@@ -22,6 +23,7 @@ app.register_blueprint(error_handler_bp)
 registrar_blue_prints(app, 'apps/routes')
 
 if _CRON_REPORTES_AUTOMATICOS_ACTIVADO:
+    get_logger().info('Scheduler de reportes automaticos ACTIVADO')
     taiga_scheduler_service.iniciar_proceso_automatico()
 
 if __name__ == "__main__":

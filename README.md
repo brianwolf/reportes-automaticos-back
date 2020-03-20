@@ -8,7 +8,7 @@
 
 ## REQUERIMIENTOS
 
-* **Python 3.7**
+* **Python 3.8**
 * **Docker**
 
 ## EJECUCION
@@ -33,4 +33,4 @@ Los parametros del script `./scripts/docker/ambiente.sh` y las variables de ambi
 
 ## PAGINAS
 
-[Docker python 3.7 apine](https://hub.docker.com/_/python)
+[Docker python 3.8 apine](https://hub.docker.com/_/python)

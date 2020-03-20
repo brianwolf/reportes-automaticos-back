@@ -92,13 +92,11 @@ def generar_reporte(config: ReportesConfig):
         mensaje = 'Error desconocido en el servicio de para generar el reporte'
         get_logger().error(mensaje, exc_info=True)
         get_logger().exception(e)
-        raise AppException(Errores.SERVICIO_URL_REPORTE, mensaje)
+        raise AppException(Errores.SERVICIO_GENERAR_REPORTE, mensaje)
 
     if resultado.status_code != 200:
         mensaje = f'Error servicio generar reporte -> URL: {url_completa}, STATUS: {resultado.status_code}, BODY: {resultado.text}'
-        app_exception = AppException(Errores.SERVICIO_URL_REPORTE, mensaje)
-        get_logger().error(app_exception.to_dict())
-        raise app_exception
+        raise AppException(Errores.SERVICIO_GENERAR_REPORTE, mensaje)
 
     contenido_reporte = resultado.content
 

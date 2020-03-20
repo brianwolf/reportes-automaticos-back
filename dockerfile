@@ -1,9 +1,10 @@
-FROM python:3.7-alpine
+FROM python:3.8
 
 ARG TAG=v1
 
 WORKDIR /usr/src/
 
+RUN apt-get install git
 
 # DEPENDENCIAS
 COPY ./src/requirements.txt .
