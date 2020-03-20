@@ -18,4 +18,4 @@ tzlocal==2.0.0
 urllib3==1.25.7
 Werkzeug==0.16.0
 yapf==0.29.0
-GitPython==3.1.0
+python-git==2018.2.1

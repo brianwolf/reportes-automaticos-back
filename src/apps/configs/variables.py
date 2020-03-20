@@ -17,6 +17,8 @@ class Var(Enum):
     NOMBRE_ARCHIVO_CONFIG = 'NOMBRE_ARCHIVO_CONFIG'
     EMAIL_ENVIADOR = 'EMAIL_ENVIADOR'
     EMAIL_PASS = 'EMAIL_PASS'
+    CARPETA_TMP = 'CARPETA_TMP'
+    CRON_REPORTES_AUTOMATICOS_ACTIVADO = 'CRON_REPORTES_AUTOMATICOS_ACTIVADO'
 
 
 _predefinidas = {
@@ -34,7 +36,9 @@ _predefinidas = {
     'DIRECTORIO_ARCHIVO_CONFIG': 'resources/configs/',
     'NOMBRE_ARCHIVO_CONFIG': 'taiga-reportes.json',
     'EMAIL_ENVIADOR': 'brian.lobo@moorea.io',
-    'EMAIL_PASS': '$leafnoise%'
+    'EMAIL_PASS': '$leafnoise%',
+    'CARPETA_TMP': '/tmp',
+    'CRON_REPORTES_AUTOMATICOS_ACTIVADO': True
 }
 
 _no_mostrar = []

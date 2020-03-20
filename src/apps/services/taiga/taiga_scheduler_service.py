@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import date
 from enum import Enum
 from typing import List
@@ -8,6 +9,7 @@ from apscheduler.job import Job
 
 import apps.configs.lector_variables as var
 import apps.utils.email_util as email_util
+import apps.utils.git_util as git_util
 import apps.utils.scheduler_util as scheduler_util
 from apps.configs.loggers import get_logger
 from apps.configs.variables import Var
@@ -101,14 +103,14 @@ def generar_reporte(config: ReportesConfig):
     contenido_reporte = resultado.content
 
     _enviar_email(config, contenido_reporte)
+    _guardar_reporte_en_git(config, contenido_reporte)
 
 
 def _enviar_email(config: ReportesConfig, contenido_reporte: bytes):
     '''
     Envia el email para terminar con el proceso
     '''
-    nombre_archivo = f'reporte-{config.nombre}-{date.today()}.md'
-    encabezado = f'Entrega reporte mensual de {config.nombre} a la fecha {date.today()}'
+    encabezado = f'Entrega de reporte mensual de {config.nombre} a la fecha {date.today()}'
     cuerpo = f'Muy buenos dias, mediante la presente les hago entrega del reporte mensual, saludos cordiales.'
 
     email_a_enviar = EmailModelo(de=_EMAIL_ENVIADOR,
@@ -118,8 +120,36 @@ def _enviar_email(config: ReportesConfig, contenido_reporte: bytes):
                                  cuerpo=cuerpo,
                                  copia=config.email_taiga.copiados,
                                  adjuntos=[(
-                                     nombre_archivo,
+                                     _nombre_reporte_final(config),
                                      contenido_reporte,
                                  )])
 
     email_util.enviar_email(email_a_enviar)
+
+
+def _nombre_reporte_final(config: ReportesConfig) -> str:
+    '''
+    Devuelve el nombre del reporte
+    '''
+    return f'{date.today()} - {config.nombre}.md'
+
+
+def _guardar_reporte_en_git(config: ReportesConfig, contenido_reporte: bytes):
+    '''
+    Guarda el reporte en git clonando el proyecto, creando el archivo de reporte,
+    commiteando y pusheando
+    '''
+    repo = git_util.clonar_repo_git(config.git)
+    get_logger().info(
+        f'Repo clonado en la ruta: {repo.working_dir} con la url: {config.git.url_repo}')
+
+    nombre_reporte = _nombre_reporte_final(config)
+    ruta_reporte = os.path.join(repo.working_dir, nombre_reporte)
+
+    with open(ruta_reporte, 'wb') as reporte_archivo:
+        reporte_archivo.write(contenido_reporte)
+
+    mensaje_commit = f'Se sube reporte de forma automatica con nombre: {nombre_reporte}'
+    git_util.pushear_a_master(repo, mensaje_commit)
+
+    git_util._borrar_carpeta_si_existe(repo.working_dir)

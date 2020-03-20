@@ -2,6 +2,8 @@ from dataclasses import dataclass, field
 from typing import List
 from uuid import UUID
 
+from apps.utils.git_util import GitConfig
+
 
 @dataclass
 class FiltrosAbstracto:
@@ -92,6 +94,7 @@ class ReportesConfig:
     uuid_sub_tareas: UUID
     url_generar_reporte: str
     email_taiga: EmailTaiga
+    git: GitConfig
 
     def to_dict(self):
         return {
@@ -101,12 +104,14 @@ class ReportesConfig:
             'uuid_tareas': self.uuid_tareas,
             'uuid_sub_tareas': self.uuid_sub_tareas,
             'url_generar_reporte': self.url_generar_reporte,
-            'email_taiga': self.email_taiga.to_dict()
+            'email_taiga': self.email_taiga.to_dict(),
+            'git': self.git.to_dict()
         }
 
     @staticmethod
-    def from_dict(d: dict):
+    def from_dict(d: dict) -> 'ReportesConfig':
         instancia = ReportesConfig(**d)
         instancia.filtros = Filtros.from_dict(d['filtros'])
         instancia.email_taiga = EmailTaiga.from_dict(d['email_taiga'])
+        instancia.git = GitConfig.from_dict(d['git'])
         return instancia
